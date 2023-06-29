@@ -1,0 +1,1 @@
+A discord bot for tracking the destruction of all stongholds in minecraft for a personal dimension
