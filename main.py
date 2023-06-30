@@ -27,15 +27,20 @@ async def on_ready():
     print('file loaded')
 
 @bot.command(name='nearest')
-async def nearest(ctx, arg1, arg2, nether: str=None):
+async def nearest(ctx, ar1, ar2, nether: str=None):
+    arg1 = 0
+    arg2 = 0
     if nether == 'n' or nether == 'nether':
-        arg1, arg2 = 8*arg1, 8*arg2
-    
+        arg1, arg2 = str(int(ar1) * 8), str(int(ar2) * 8)
+    elif nether == None:
+        arg1, arg2 = ar1, ar2
+    else:
+        await ctx.send('wrong arguments')
+        return
 
     mindist = 1000000
     co = []
     for s in stdata.keys():
-        
         if stdata[s] == 0:
             if mindist > dist([int(arg1), int(arg2)], list(map(int, s.split()))):
                 co = s
